@@ -21,7 +21,8 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-
+    when /^the\s+edit\s+page\s+for\s+"(.*)"$/
+      "/movies/" + Movie.find_by_title!($1).id.to_s + "/edit"
     else
       begin
         page_name =~ /^the (.*) page$/
