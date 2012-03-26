@@ -14,7 +14,7 @@ module NavigationHelpers
     case page_name
 
     when /^the home\s?page$/
-      '/'
+      '/movies'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -23,6 +23,10 @@ module NavigationHelpers
     #     user_profile_path(User.find_by_login($1))
     when /^the\s+edit\s+page\s+for\s+"(.*)"$/
       "/movies/" + Movie.find_by_title!($1).id.to_s + "/edit"
+    when /^the\s+details\s+page\s+for\s+"(.*)"$/
+      "/movies/" + Movie.find_by_title!($1).id.to_s    
+    when /^the Similar Movies page for "(.*)"$/
+      "/search"
     else
       begin
         page_name =~ /^the (.*) page$/

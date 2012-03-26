@@ -58,4 +58,26 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def search
+    if params[:director].nil? || params[:director].empty?
+      redirect_to all_movies_path and return
+    end
+    
+    @movies = Movie.where("director = ?", params[:director]).all
+    if @movies.size == 0
+      redirect_to all_movies_path and return
+    end
+  end
+  
+  def all_movies_path
+    all_values = {}
+    
+    Movie.all_ratings.each do |rating|
+      all_values[rating] = 1
+    end
+    session[:ratings] = all_values
+    
+    movies_path
+  end
+  
 end
