@@ -26,7 +26,7 @@ module NavigationHelpers
     when /^the\s+details\s+page\s+for\s+"(.*)"$/
       "/movies/" + Movie.find_by_title!($1).id.to_s    
     when /^the Similar Movies page for "(.*)"$/
-      "/movies/" + Movie.find_by_title!($1).id.to_s + "/similar"
+      "/movies/similar/" + Movie.find_by_title!($1).id.to_s
     else
       begin
         page_name =~ /^the (.*) page$/
