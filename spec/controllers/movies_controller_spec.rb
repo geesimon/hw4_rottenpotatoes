@@ -18,6 +18,12 @@ describe MoviesController do
       get :similar, :id=>@movie
       response.should be_success
     end
+    
+    it "should redirect to home page when no director is found" do
+      bad_movie = Factory(:movie, :director => "")
+      get :similar, :id=>bad_movie
+      response.should redirect_to(movies_path)
+    end
   end
-  
+
 end
