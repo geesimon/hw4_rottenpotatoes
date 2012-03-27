@@ -23,6 +23,6 @@ Then /^the director of "([^"]*)" should be "([^"]*)"$/ do |movie_name, director_
   page.find("#main").text.gsub(/\n/,"").index(/#{movie_name}(.*)#{director_name}/).should_not == nil
 end
 
-Then /^I should see "([^"]*)" has no director info$/ do |movie_name|
-  page.find('#movies tr', :text => movie_name).find('td:nth-child(2)').text.empty?.should == true
-end
+#Then /^I should see "'([^"]*)' has no director info"$/ do |movie_name|
+#  page.find('#movies tr', :text => movie_name).find('td:nth-child(2)').text.empty?.should == true
+#end
